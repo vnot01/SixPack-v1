@@ -56,10 +56,8 @@
     },
     "is_top_level": true,
     "variables": {
-      "APP_ID": "1950541921919801",
-      "APP_NAME": "Six Pack Abs",
-      "FACEBOOK_HYBRID_APP_EVENTS": "false",
-      "FACEBOOK_ANDROID_SDK_VERSION": "5.5.2"
+      "APP_ID": "496338344865390",
+      "APP_NAME": "MySixPack"
     }
   },
   "com.telerik.plugins.nativepagetransitions": {
