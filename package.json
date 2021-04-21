@@ -1,6 +1,6 @@
 {
-  "name": "sixpack",
-  "version": "0.0.1",
+  "name": "mysixpack",
+  "version": "0.1.4",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -34,6 +34,7 @@
     "@mdi/font": "^4.6.95",
     "@mdi/svg": "^4.6.95",
     "animate.css": "^3.7.2",
+    "build": "0.1.4",
     "com.telerik.plugins.nativepagetransitions": "^0.6.5",
     "cordova-admob-sdk": "^0.24.1",
     "cordova-android": "^8.1.0",
