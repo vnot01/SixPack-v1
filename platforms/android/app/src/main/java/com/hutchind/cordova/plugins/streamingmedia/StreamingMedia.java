@@ -57,7 +57,7 @@ public class StreamingMedia extends CordovaPlugin {
 	private boolean play(final Class activityClass, final String url, final JSONObject options) {
 		final CordovaInterface cordovaObj = cordova;
 		final CordovaPlugin plugin = this;
-
+		Log.e(TAG,"MEDIA URL => "+url);
 		cordova.getActivity().runOnUiThread(new Runnable() {
 			public void run() {
 				final Intent streamIntent = new Intent(cordovaObj.getActivity().getApplicationContext(), activityClass);
@@ -71,10 +71,10 @@ public class StreamingMedia extends CordovaPlugin {
 							final String optKey = (String)optKeys.next();
 							if (options.get(optKey).getClass().equals(String.class)) {
 								extras.putString(optKey, (String)options.get(optKey));
-								Log.v(TAG, "Added option: " + optKey + " -> " + String.valueOf(options.get(optKey)));
+								Log.e(TAG, "Added option: " + optKey + " -> " + String.valueOf(options.get(optKey)));
 							} else if (options.get(optKey).getClass().equals(Boolean.class)) {
 								extras.putBoolean(optKey, (Boolean)options.get(optKey));
-								Log.v(TAG, "Added option: " + optKey + " -> " + String.valueOf(options.get(optKey)));
+								Log.e(TAG, "Added option: " + optKey + " -> " + String.valueOf(options.get(optKey)));
 							}
 
 						} catch (JSONException e) {
@@ -91,7 +91,7 @@ public class StreamingMedia extends CordovaPlugin {
 	}
 
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		Log.v(TAG, "onActivityResult: " + requestCode + " " + resultCode);
+		Log.e(TAG, "onActivityResult: " + requestCode + " " + resultCode);
 		super.onActivityResult(requestCode, resultCode, intent);
 		if (ACTIVITY_CODE_PLAY_MEDIA == requestCode) {
 			if (Activity.RESULT_OK == resultCode) {

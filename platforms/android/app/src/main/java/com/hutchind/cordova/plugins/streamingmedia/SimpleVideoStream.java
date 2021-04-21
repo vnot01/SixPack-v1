@@ -41,6 +41,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 
 		Bundle b = getIntent().getExtras();
 		mVideoUrl = b.getString("mediaUrl");
+		Log.e(TAG,"VIDEO URL = "+mVideoUrl);
 		mShouldAutoClose = b.getBoolean("shouldAutoClose", true);
 		mControls = b.getBoolean("controls", true);
 
@@ -86,7 +87,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 			}
 			mVideoView.setMediaController(mMediaController);
 		} catch (Throwable t) {
-			Log.d(TAG, t.toString());
+			Log.e(TAG, t.toString());
 		}
 	}
 
@@ -115,7 +116,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 
 	@Override
 	public void onPrepared(MediaPlayer mp) {
-		Log.d(TAG, "Stream is prepared");
+		Log.e(TAG, "Stream is prepared");
 		mMediaPlayer = mp;
 		mMediaPlayer.setOnBufferingUpdateListener(this);
 		mVideoView.requestFocus();
@@ -124,24 +125,24 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 	}
 
 	private void pause() {
-		Log.d(TAG, "Pausing video.");
+		Log.e(TAG, "Pausing video.");
 		mVideoView.pause();
 	}
 
 	private void stop() {
-		Log.d(TAG, "Stopping video.");
+		Log.e(TAG, "Stopping video.");
 		mVideoView.stopPlayback();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		Log.d(TAG, "onDestroy triggered.");
+		Log.e(TAG, "onDestroy triggered.");
 		stop();
 	}
 
 	private void wrapItUp(int resultCode, String message) {
-		Log.d(TAG, "wrapItUp was triggered.");
+		Log.e(TAG, "wrapItUp was triggered.");
 		Intent intent = new Intent();
 		intent.putExtra("message", message);
 		setResult(resultCode, intent);
@@ -149,7 +150,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 	}
 
 	public void onCompletion(MediaPlayer mp) {
-		Log.d(TAG, "onCompletion triggered.");
+		Log.e(TAG, "onCompletion triggered.");
 		stop();
 		if (mShouldAutoClose) {
 			wrapItUp(RESULT_OK, null);
@@ -183,7 +184,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 	}
 
 	public void onBufferingUpdate(MediaPlayer mp, int percent) {
-		Log.d(TAG, "onBufferingUpdate : " + percent + "%");
+		Log.e(TAG, "onBufferingUpdate : " + percent + "%");
 	}
 
 	@Override

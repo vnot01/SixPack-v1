@@ -70,27 +70,31 @@ export class EdetailsPage implements OnInit {
     }
 
     getDetails() {
-
     this.dataService.getDataExerciseById(this.id)
     .subscribe( resp => {
-
       this.exercise = resp[0];
       this.isLoading = false;
-
-  } );
+    } );
 }
 
 play() {
+  const videoUrl = this.exercise.exercise_video;
   const options: StreamingVideoOptions = {
     successCallback: () => { console.log('Video played'); },
     errorCallback: (e) => { console.log('Error streaming'); },
     orientation: 'landscape',
-    shouldAutoClose: true,
+    shouldAutoClose: false,
     controls: true
   };
 
+  // var videoUrl = STREAMING_VIDEO_URL;
   // tslint:disable-next-line: max-line-length
-  this.streamingMedia.playVideo('https://firebasestorage.googleapis.com/v0/b/six-pack-app.appspot.com/o/video.mp4?alt=media&token=453512dd-f079-4355-a325-92a9b2f7e465', options);
+  // this.streamingMedia.playVideo(videoUrl, options);
+  // exercise_video
+  
+  // <p class="value">{{exercise.exercise_video}}
+  // this.streamingMedia.playVideo('https://sixpack.sivnot.com/videos/RenegadeRow.mp4', options);
+  this.streamingMedia.playVideo(videoUrl, options);
 }
 
 setPortrait() {

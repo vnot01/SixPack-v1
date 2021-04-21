@@ -109,15 +109,15 @@ MediaController.MediaPlayerControl {
 
 			mMediaPlayer.prepareAsync();
 
-			Log.d(TAG, "LoadClip Done");
+			Log.e(TAG, "LoadClip Done");
 		} catch (Throwable t) {
-			Log.d(TAG, t.toString());
+			Log.e(TAG, t.toString());
 		}
 	}
 
 	@Override
 	public void onPrepared(MediaPlayer mp) {
-		Log.d(TAG, "Stream is prepared");
+		Log.e(TAG, "Stream is prepared");
 		mMediaController.setMediaPlayer(this);
 		mMediaController.setAnchorView(mMediaControllerView);
 		mMediaPlayer.start();
@@ -138,7 +138,7 @@ MediaController.MediaPlayerControl {
 			try {
 				mMediaPlayer.pause();
 			} catch (Exception e) {
-				Log.d(TAG, e.toString());
+				Log.e(TAG, e.toString());
 			}
 		}
 	}
@@ -148,7 +148,7 @@ MediaController.MediaPlayerControl {
 			try {
 				mMediaPlayer.stop();
 			} catch (Exception e) {
-				Log.d(TAG, e.toString());
+				Log.e(TAG, e.toString());
 			}
 		}
 	}
@@ -172,7 +172,7 @@ MediaController.MediaPlayerControl {
 			try {
 				return mMediaPlayer.isPlaying();
 			} catch (Exception e) {
-				Log.d(TAG, e.toString());
+				Log.e(TAG, e.toString());
 			}
 		}
 		return false;
@@ -225,7 +225,7 @@ MediaController.MediaPlayerControl {
 	public void onCompletion(MediaPlayer mp) {
 		stop();
 		if (mShouldAutoClose) {
-			Log.v(TAG, "FINISHING ACTIVITY");
+			Log.e(TAG, "FINISHING ACTIVITY");
 			wrapItUp(RESULT_OK, null);
 		}
 
@@ -257,7 +257,7 @@ MediaController.MediaPlayerControl {
 	}
 
 	public void onBufferingUpdate(MediaPlayer mp, int percent) {
-		Log.d(TAG, "PlayerService onBufferingUpdate : " + percent + "%");
+		Log.e(TAG, "PlayerService onBufferingUpdate : " + percent + "%");
 	}
 
 	@Override
