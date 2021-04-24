@@ -4,6 +4,8 @@ import * as firebase from 'firebase/app';
 import { FirebaseService } from './firebase.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { Router } from '@angular/router';
+// import { Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,8 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 export class AuthService {
 
   constructor(
+    // private subscription:Subscription,
+    private router: Router,
     private firebaseService: FirebaseService,
     public afAuth: AngularFireAuth,
     private fb: Facebook,
@@ -44,12 +48,38 @@ export class AuthService {
     });
    }
 
+  restartApp(){
+    // var onError = function(error){
+    //   console.error("The following error occurred: "+error);
+    // }
+    
+    // Warm restart
+    // cordova.plugins.diagnostic.restart(onError, false);
+        
+    // Cold restart
+    // cordova.plugins.diagnostic.restart(onError, true);
+    // location.reload();
+    this.router.navigate(['/login']);
+    // navigator['app'].exitApp();
+  }
+
+  // ionViewWillLeave(){
+  //   this.subscription.unsubscribe();
+  // }
+
   doLogout() {
-    return new Promise((resolve, reject) => {
-      this.afAuth.auth.signOut()
-      .then(() => {
+    return new Promise<void>((resolve, reject) => {
+      // this.afAuth.auth.signOut().then(() => {
+      //   this.router.navigate(["/home"]);
+      // })
+      this.afAuth.auth.signOut().then(() => {
         // this.firebaseService.unsubscribeOnLogOut();
+        // this.firebaseService.unsubscribeOnLogOut();
+        // this.router.navigate(['/start']);
+        // this.router.navigate(['/loader']);
+        // location.reload();
         resolve();
+        this.restartApp();
       }).catch((error) => {
         console.log(error);
         reject();
@@ -58,7 +88,7 @@ export class AuthService {
   }
 
     doFacebookLogin() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         if (this.platform.is('cordova')) {
           // ["public_profile"] is the array of permissions, you can add more if you need
           this.fb.login(['public_profile'])

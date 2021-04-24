@@ -33,9 +33,9 @@ export class EdetailsPage implements OnInit {
 
     ngOnInit() {
       this.admob.HideBannerAd();
+      this.setPortrait();
       if( this.orientation === 'landscape') {
         this.setPortrait();
-
       }
     }
 
@@ -45,7 +45,7 @@ export class EdetailsPage implements OnInit {
         data => {
           this.id = data.id;
           this.getDetails();
-
+          
           if (!this.id) {
             this.goBack();
           }
@@ -78,11 +78,14 @@ export class EdetailsPage implements OnInit {
 }
 
 play() {
+  this.unlockScreenOrientation();
+  this.observeScreenOrientation();
+
   const videoUrl = this.exercise.exercise_video;
   const options: StreamingVideoOptions = {
-    successCallback: () => { console.log('Video played'); },
-    errorCallback: (e) => { console.log('Error streaming'); },
-    orientation: 'landscape',
+    successCallback: () => { console.info('Video played'); },
+    errorCallback: (e) => { console.info('Error streaming'); },
+    orientation: `${this.screenOrientation.type}`,
     shouldAutoClose: false,
     controls: true
   };
@@ -97,9 +100,48 @@ play() {
   this.streamingMedia.playVideo(videoUrl, options);
 }
 
+getCurrentPosition(){
+
+}
+
 setPortrait() {
   // set to portrait
-  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  // this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  this.lockScreenOrientation();
 }
+
+setLandscape() {
+  // set to portrait
+  this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+}
+
+getCurrentScreenOrientation(){
+  // get current
+  console.info(this.screenOrientation.type); // logs the current orientation, example: 'landscape'  
+}
+
+unlockScreenOrientation(){
+  // allow user rotate
+  this.screenOrientation.unlock();
+}
+
+lockScreenOrientation(){
+  try{
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }catch(error){
+    console.error(error);
+    
+  }
+}
+
+observeScreenOrientation(){
+  // detect orientation changes
+  this.screenOrientation.onChange().subscribe(
+    () => {
+      console.warn("Orientation Changed");
+    }
+  );
+}
+
 
 }

@@ -18,15 +18,25 @@
       </ion-row>
   
       <ion-row class="menu-cols align-items-stretch">
-          <ion-col size="6" [routerLink]="['/workouts']">
+
+          <ion-col size="6" [routerLink]="['/goals']">
             <img src="./assets/images/workouts.png">
-            <ion-label>{{strings.ST1}}</ion-label>
+            <ion-label>{{strings.ST144}}</ion-label>
           </ion-col>
 
-          <ion-col size="6" [routerLink]="['/exercises']">
+          <!-- 
+            <ion-col size="6" [routerLink]="['/workouts']">
+            <img src="./assets/images/workouts.png">
+            <ion-label>{{strings.ST1}}</ion-label>
+          </ion-col> 
+          -->
+
+          <!-- 
+            <ion-col size="6" [routerLink]="['/exercises']">
               <img src="./assets/images/exercises.png">
               <ion-label>{{strings.ST2}}</ion-label>
-          </ion-col>
+          </ion-col> 
+          -->
 
           <ion-col size="6" [routerLink]="['/diets']">
               <img src="./assets/images/diets.png">
@@ -43,10 +53,17 @@
               <ion-label>{{strings.ST105}}</ion-label>
           </ion-col>
             
-          <ion-col size="6" [routerLink]="['/motivation']">
-              <img src="./assets/images/quotes.png">
-              <ion-label>{{strings.ST5}}</ion-label>
+          <ion-col size="6" [routerLink]="['/profile']">
+              <img src="./assets/images/profile.png">
+              <ion-label>{{strings.ST145}}</ion-label>
           </ion-col>
+
+          <!-- 
+            <ion-col size="6" [routerLink]="['/motivation']">
+            <img src="./assets/images/quotes.png">
+            <ion-label>{{strings.ST5}}</ion-label>
+          </ion-col> 
+          -->
 
       </ion-row>
   

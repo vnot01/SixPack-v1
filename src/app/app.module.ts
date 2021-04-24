@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
-import {StreamingMedia} from '@ionic-native/streaming-media/ngx';
+import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
 import { AdmobService } from './services/admob.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -43,6 +43,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AngularFirestoreModule, // imports firebase/firestore
     AngularFireAuthModule, // imports firebase/auth
     AngularFireStorageModule // imports firebase/storage
+    
   ],
   providers: [
     StatusBar,

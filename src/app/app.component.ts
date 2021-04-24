@@ -24,11 +24,11 @@ export class AppComponent {
       url: '/workouts',
       icon: 'md-calendar'
     },
-    {
-      title: strings.ST2,
-      url: '/exercises',
-      icon: 'md-fitness'
-    },
+    // {
+    //   title: strings.ST2,
+    //   url: '/exercises',
+    //   icon: 'md-fitness'
+    // },
     {
       title: strings.ST3,
       url: '/diets',
@@ -39,11 +39,11 @@ export class AppComponent {
       url: '/posts',
       icon: 'md-list-box'
     },
-    {
-      title: strings.ST5,
-      url: '/motivation',
-      icon: 'md-quote'
-    },
+    // {
+    //   title: strings.ST5,
+    //   url: '/motivation',
+    //   icon: 'md-quote'
+    // },
     {
       title: strings.ST105,
       url: '/calculator',
@@ -88,12 +88,16 @@ export class AppComponent {
       });
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
+      this.platform.backButton.subscribeWithPriority(0, () => {
+        navigator['app'].exitApp();
+      });
     });
   }
 
   logout() {
     this.authService.doLogout()
     .then(res => {
+      this.initializeApp();
       this.navCtrl.pop();
     }, err => {
       console.log(err);

@@ -6,7 +6,7 @@ export const strings = {
 
     ST2: 'Exercises',
 
-    ST3: 'Diets',
+    ST3: 'Healthy Food',
 
     ST4: 'Blog',
 
@@ -198,7 +198,7 @@ export const strings = {
 
     ST104: 'Facebook',
 
-    ST105: 'Calculator',
+    ST105: 'Check BMI',
 
     ST106: 'Browse',
 
@@ -275,5 +275,9 @@ export const strings = {
     ST142: 'No Diets Found',
 
     ST143: 'No Posts Found',
+    
+    ST144: 'Healthy Program',
+
+    ST145: 'Profile',
 
 };
